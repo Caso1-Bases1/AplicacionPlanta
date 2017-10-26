@@ -1,9 +1,15 @@
+package view;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import util.Utility;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,22 +26,6 @@ public class AplicacionMarcas {
 	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AplicacionMarcas window = new AplicacionMarcas();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public AplicacionMarcas() {
@@ -48,8 +38,7 @@ public class AplicacionMarcas {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Aplicacion de Planta");
-		frame.setBounds(100, 100, 568, 307);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(850, 200, 568, 307);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNombreDeEmpleado = new JLabel("Nombre de Empleado");
@@ -90,7 +79,21 @@ public class AplicacionMarcas {
 		btnSalida.setBounds(259, 202, 115, 23);
 		frame.getContentPane().add(btnSalida);
 		horaActual.setText(dateFormat.format(date));
-
 		
+		frame.addWindowListener(new WindowAdapter() {		
+            public void windowClosing(WindowEvent e){
+            	Utility.IS_MARCAS_OPEN = false;
+            }
+        });
+		
+		Utility.IS_MARCAS_OPEN = true;
 	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}		
 }

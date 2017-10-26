@@ -13,6 +13,9 @@ import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class PrincipalWindow extends JFrame {
 
@@ -42,6 +45,27 @@ public class PrincipalWindow extends JFrame {
 	public PrincipalWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 800, 600);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnMantenimiento = new JMenu("Mantenimiento");
+		menuBar.add(mnMantenimiento);
+		
+		JMenu mnEmpleados = new JMenu("Empleados");
+		mnMantenimiento.add(mnEmpleados);
+		
+		JMenuItem mntmNuevoEmpleado = new JMenuItem("Nuevo Empleado");
+		mnEmpleados.add(mntmNuevoEmpleado);
+		
+		JMenuItem mntmBuscarEmpleado = new JMenuItem("Buscar Empleado");
+		mnEmpleados.add(mntmBuscarEmpleado);
+		
+		JMenuItem mntmModificarEmpleado = new JMenuItem("Modificar Empleado");
+		mnEmpleados.add(mntmModificarEmpleado);
+		
+		JMenuItem mntmEliminarEmpleado = new JMenuItem("Eliminar Empleado");
+		mnEmpleados.add(mntmEliminarEmpleado);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

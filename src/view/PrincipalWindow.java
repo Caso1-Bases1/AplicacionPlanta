@@ -20,7 +20,8 @@ import javax.swing.JMenuItem;
 public class PrincipalWindow extends JFrame {
 
 	private JPanel contentPane;
-
+	public static int PLANT_NUMBER = 0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -121,7 +122,7 @@ public class PrincipalWindow extends JFrame {
 		JMenuItem mntmModificarCdigoDe = new JMenuItem("Modificar c\u00F3digo de planta");
 		mntmModificarCdigoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UpdatePlantCodeView upc = new UpdatePlantCodeView();
+				UpdatePlantCodeView upc = new UpdatePlantCodeView(PLANT_NUMBER);
 				contentPane.add(upc).setBounds(0, 0, 800, 600);
 				repaint();
 			}

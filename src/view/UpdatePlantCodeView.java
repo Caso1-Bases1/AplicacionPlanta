@@ -2,6 +2,9 @@ package view;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import model.PlantController;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -12,13 +15,15 @@ import java.awt.event.ActionEvent;
 
 public class UpdatePlantCodeView extends JPanel {
 	private JTextField textField_1;
-
+	private int numeroPlanta;
+	
 	/**
 	 * Create the panel.
 	 */
-	public UpdatePlantCodeView() {
+	public UpdatePlantCodeView(int pNumeroPlanta) {
 		setLayout(null);
-		
+		numeroPlanta = pNumeroPlanta;
+		pNumeroPlanta = numeroPlanta;
 		JLabel lblMidificarCdigoDe = new JLabel("Midificar c\u00F3digo de planta");		
 		lblMidificarCdigoDe.setBounds(159, 33, 212, 14);
 		add(lblMidificarCdigoDe);
@@ -37,6 +42,9 @@ public class UpdatePlantCodeView extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					int codePlant = Integer.parseInt(textField_1.getText());
+					numeroPlanta = codePlant;
+					PlantController plantController = new PlantController();
+					plantController.modifyPlantNumber(numeroPlanta);
 				} catch (NumberFormatException ex){
 					JOptionPane.showMessageDialog(null, "Código incorrecto");
 				}
@@ -44,5 +52,5 @@ public class UpdatePlantCodeView extends JPanel {
 		});
 		btnModificar.setBounds(173, 184, 89, 23);
 		add(btnModificar);		
-	}
+	}	
 }

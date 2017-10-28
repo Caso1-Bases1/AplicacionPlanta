@@ -42,7 +42,7 @@ public class AplicacionMarcas {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNombreDeEmpleado = new JLabel("Nombre de Empleado");
-		lblNombreDeEmpleado.setBounds(97, 21, 115, 14);
+		lblNombreDeEmpleado.setBounds(97, 21, 166, 14);
 		frame.getContentPane().add(lblNombreDeEmpleado);
 		
 		JLabel lblIdentificacion = new JLabel("Identificacion");
@@ -68,7 +68,7 @@ public class AplicacionMarcas {
 		frame.getContentPane().add(horaActual);
 		horaActual.setColumns(10);
 		JButton btnHoraDeEntrada = new JButton("Hora de Entrada");
-		btnHoraDeEntrada.setBounds(97, 202, 115, 23);
+		btnHoraDeEntrada.setBounds(97, 202, 132, 23);
 		frame.getContentPane().add(btnHoraDeEntrada);
 		
 		JButton btnSalida = new JButton("Hora de Salida");
@@ -76,7 +76,7 @@ public class AplicacionMarcas {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSalida.setBounds(259, 202, 115, 23);
+		btnSalida.setBounds(259, 202, 132, 23);
 		frame.getContentPane().add(btnSalida);
 		horaActual.setText(dateFormat.format(date));
 		

@@ -3,17 +3,20 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import model.PlantModel;
+import controller.PlantController;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class UpdatePlantCodeView extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6540063930804745739L;
 	private JTextField textField_1;
 	private int numeroPlanta;
 	
@@ -43,7 +46,7 @@ public class UpdatePlantCodeView extends JPanel {
 				try {
 					int codePlant = Integer.parseInt(textField_1.getText());
 					numeroPlanta = codePlant;
-					PlantModel plantController = new PlantModel();
+					PlantController plantController = new PlantController();
 					plantController.modifyPlantNumber(numeroPlanta);
 				} catch (NumberFormatException ex){
 					JOptionPane.showMessageDialog(null, "Código incorrecto");

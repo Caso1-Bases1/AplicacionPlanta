@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 import util.Utility;
 
-import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,6 +17,10 @@ import javax.swing.JMenuItem;
 
 public class PrincipalWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2243915517392760924L;
 	private JPanel contentPane;
 	public static int PLANT_NUMBER = 0;
 	
@@ -57,63 +59,175 @@ public class PrincipalWindow extends JFrame {
 		mnMantenimiento.add(mnEmpleados);
 		
 		JMenuItem mntmNuevoEmpleado = new JMenuItem("Nuevo Empleado");
+		mntmNuevoEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InsertEmployeeView employeeView = new InsertEmployeeView();
+				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnEmpleados.add(mntmNuevoEmpleado);
 		
 		JMenuItem mntmBuscarEmpleado = new JMenuItem("Buscar Empleado");
+		mntmBuscarEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchEmployeeView employeeView = new SearchEmployeeView();
+				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnEmpleados.add(mntmBuscarEmpleado);
 		
 		JMenuItem mntmModificarEmpleado = new JMenuItem("Modificar Empleado");
+		mntmModificarEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateEmployeeView employeeView = new UpdateEmployeeView();
+				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnEmpleados.add(mntmModificarEmpleado);
 		
 		JMenuItem mntmEliminarEmpleado = new JMenuItem("Eliminar Empleado");
+		mntmEliminarEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteEmployeeView employeeView = new DeleteEmployeeView();
+				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnEmpleados.add(mntmEliminarEmpleado);
 		
 		JMenu mnTiposDeEmpleados = new JMenu("Tipos de empleados");
 		mnMantenimiento.add(mnTiposDeEmpleados);
 		
 		JMenuItem mntmNuevoTipoDe = new JMenuItem("Nuevo tipo de empleado");
+		mntmNuevoTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertEmployeeTypeView employeeTypeView = new InsertEmployeeTypeView();
+				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnTiposDeEmpleados.add(mntmNuevoTipoDe);
 		
 		JMenuItem mntmBuscarTipoDe = new JMenuItem("Buscar tipo de empleado");
+		mntmBuscarTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchEmployeeTypeView employeeTypeView = new SearchEmployeeTypeView();
+				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnTiposDeEmpleados.add(mntmBuscarTipoDe);
 		
 		JMenuItem mntmModificarTipoDe = new JMenuItem("Modificar tipo de empleado");
+		mntmModificarTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateEmployeeTypeView employeeTypeView = new UpdateEmployeeTypeView();
+				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnTiposDeEmpleados.add(mntmModificarTipoDe);
 		
 		JMenuItem mntmEliminarTipoDe = new JMenuItem("Eliminar tipo de empleado");
+		mntmEliminarTipoDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteEmployeeTypeView employeeTypeView = new DeleteEmployeeTypeView();
+				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnTiposDeEmpleados.add(mntmEliminarTipoDe);
 		
 		JMenu mnDasLaborables = new JMenu("D\u00EDas laborables");
 		mnMantenimiento.add(mnDasLaborables);
 		
-		JMenu mnAdministrarFeriados = new JMenu("Administrar feriados");
+		JMenu mnAdministrarFeriados = new JMenu("Administrar d\u00EDas laborables");
 		mnDasLaborables.add(mnAdministrarFeriados);
 		
 		JMenuItem mntmNuevoDaLaborable = new JMenuItem("Nuevo d\u00EDa laborable");
+		mntmNuevoDaLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertWorkingDayView workingDayView = new InsertWorkingDayView();
+				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarFeriados.add(mntmNuevoDaLaborable);
 		
 		JMenuItem mntmBuscarDaLaborable = new JMenuItem("Buscar d\u00EDa laborable");
+		mntmBuscarDaLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchWorkingDayView workingDayView = new SearchWorkingDayView();
+				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
+				repaint();			
+			}
+		});
 		mnAdministrarFeriados.add(mntmBuscarDaLaborable);
 		
 		JMenuItem mntmModificarDaLaborable = new JMenuItem("Modificar d\u00EDa laborable");
+		mntmModificarDaLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {				
+				UpdateWorkingDayView workingDayView = new UpdateWorkingDayView();
+				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarFeriados.add(mntmModificarDaLaborable);
 		
 		JMenuItem mntmEliminarDaLaborable = new JMenuItem("Eliminar d\u00EDa laborable");
+		mntmEliminarDaLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteWorkingDayView workingDayView = new DeleteWorkingDayView();
+				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
+				repaint();				
+			}
+		});
 		mnAdministrarFeriados.add(mntmEliminarDaLaborable);
 		
-		JMenu mnAdministrarDiasLaborables = new JMenu("Administrar dias laborables");
+		JMenu mnAdministrarDiasLaborables = new JMenu("Administrar feriados");
 		mnDasLaborables.add(mnAdministrarDiasLaborables);
 		
 		JMenuItem mntmNuevoFeriado = new JMenuItem("Nuevo feriado");
+		mntmNuevoFeriado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InsertHolidayView holidayView = new InsertHolidayView();
+				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarDiasLaborables.add(mntmNuevoFeriado);
 		
 		JMenuItem mntmBuscarFeriado = new JMenuItem("Buscar feriado");
+		mntmBuscarFeriado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SearchHolidayView holidayView = new SearchHolidayView();
+				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarDiasLaborables.add(mntmBuscarFeriado);
 		
 		JMenuItem mntmModificarFeriado = new JMenuItem("Modificar feriado");
+		mntmModificarFeriado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UpdateHolidayView holidayView = new UpdateHolidayView();
+				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarDiasLaborables.add(mntmModificarFeriado);
 		
 		JMenuItem mntmEliminarFeriado = new JMenuItem("Eliminar feriado");
+		mntmEliminarFeriado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DeleteHolidayView holidayView = new DeleteHolidayView();
+				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnAdministrarDiasLaborables.add(mntmEliminarFeriado);
 		
 		JMenu mnCdigoDePlanta = new JMenu("C\u00F3digo de planta");

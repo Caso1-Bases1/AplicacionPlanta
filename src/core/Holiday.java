@@ -1,6 +1,6 @@
 package core;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Holiday {
 	private Date date;

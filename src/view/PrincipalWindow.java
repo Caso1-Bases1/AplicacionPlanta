@@ -62,6 +62,7 @@ public class PrincipalWindow extends JFrame {
 		mntmNuevoEmpleado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				InsertEmployeeView employeeView = new InsertEmployeeView();
+				contentPane.removeAll();
 				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -72,6 +73,7 @@ public class PrincipalWindow extends JFrame {
 		mntmBuscarEmpleado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SearchEmployeeView employeeView = new SearchEmployeeView();
+				contentPane.removeAll();
 				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -82,6 +84,7 @@ public class PrincipalWindow extends JFrame {
 		mntmModificarEmpleado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateEmployeeView employeeView = new UpdateEmployeeView();
+				contentPane.removeAll();
 				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -92,6 +95,7 @@ public class PrincipalWindow extends JFrame {
 		mntmEliminarEmpleado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DeleteEmployeeView employeeView = new DeleteEmployeeView();
+				contentPane.removeAll();
 				contentPane.add(employeeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -105,6 +109,7 @@ public class PrincipalWindow extends JFrame {
 		mntmNuevoTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InsertEmployeeTypeView employeeTypeView = new InsertEmployeeTypeView();
+				contentPane.removeAll();
 				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -115,6 +120,7 @@ public class PrincipalWindow extends JFrame {
 		mntmBuscarTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SearchEmployeeTypeView employeeTypeView = new SearchEmployeeTypeView();
+				contentPane.removeAll();
 				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -125,6 +131,7 @@ public class PrincipalWindow extends JFrame {
 		mntmModificarTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateEmployeeTypeView employeeTypeView = new UpdateEmployeeTypeView();
+				contentPane.removeAll();
 				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -135,6 +142,7 @@ public class PrincipalWindow extends JFrame {
 		mntmEliminarTipoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DeleteEmployeeTypeView employeeTypeView = new DeleteEmployeeTypeView();
+				contentPane.removeAll();
 				contentPane.add(employeeTypeView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -151,6 +159,7 @@ public class PrincipalWindow extends JFrame {
 		mntmNuevoDaLaborable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InsertWorkingDayView workingDayView = new InsertWorkingDayView();
+				contentPane.removeAll();
 				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -161,6 +170,7 @@ public class PrincipalWindow extends JFrame {
 		mntmBuscarDaLaborable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SearchWorkingDayView workingDayView = new SearchWorkingDayView();
+				contentPane.removeAll();
 				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
 				repaint();			
 			}
@@ -171,6 +181,7 @@ public class PrincipalWindow extends JFrame {
 		mntmModificarDaLaborable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				UpdateWorkingDayView workingDayView = new UpdateWorkingDayView();
+				contentPane.removeAll();
 				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -181,6 +192,7 @@ public class PrincipalWindow extends JFrame {
 		mntmEliminarDaLaborable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DeleteWorkingDayView workingDayView = new DeleteWorkingDayView();
+				contentPane.removeAll();
 				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
 				repaint();				
 			}
@@ -194,6 +206,7 @@ public class PrincipalWindow extends JFrame {
 		mntmNuevoFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				InsertHolidayView holidayView = new InsertHolidayView();
+				contentPane.removeAll();
 				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -204,6 +217,7 @@ public class PrincipalWindow extends JFrame {
 		mntmBuscarFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SearchHolidayView holidayView = new SearchHolidayView();
+				contentPane.removeAll();
 				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -214,6 +228,7 @@ public class PrincipalWindow extends JFrame {
 		mntmModificarFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdateHolidayView holidayView = new UpdateHolidayView();
+				contentPane.removeAll();
 				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -224,6 +239,7 @@ public class PrincipalWindow extends JFrame {
 		mntmEliminarFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DeleteHolidayView holidayView = new DeleteHolidayView();
+				contentPane.removeAll();
 				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
 				repaint();
 			}
@@ -237,6 +253,7 @@ public class PrincipalWindow extends JFrame {
 		mntmModificarCdigoDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UpdatePlantCodeView upc = new UpdatePlantCodeView(PLANT_NUMBER);
+				contentPane.removeAll();
 				contentPane.add(upc).setBounds(0, 0, 800, 600);
 				repaint();
 			}

@@ -1,29 +1,29 @@
 package model;
 
-public class HolidayModel implements DefaultModel{
+import core.Holiday;
 
-	@Override
+public class HolidayModel {
+
+	private Holiday holiday;
+	
+	public HolidayModel(Holiday holiday){
+		this.holiday = holiday;
+	}
+	
 	public boolean insert() {
-		
 		return false;
 	}
 
-	@Override
-	public boolean update() {
-		
-		return false;
+	public Holiday update() {
+		return holiday;
 	}
 
-	@Override
 	public boolean delete() {
 		
 		return false;
 	}
 
-	@Override
-	public boolean search() {
-		
-		return false;
+	public Holiday search() {
+		return holiday;
 	}
-
 }

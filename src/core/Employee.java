@@ -1,6 +1,6 @@
 package core;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Employee {
 	private int employee_code;
@@ -13,6 +13,7 @@ public class Employee {
 	private int supervisorCode;
 	private int employeeType;
 	private int idPlant;
+	
 	public Employee(int employee_code, String name, String apellidos, Date admissionDate, Date departureDate,
 			float salary, String department, int supervisorCode, int employeeType, int idPlant) {
 		super();
@@ -27,6 +28,7 @@ public class Employee {
 		this.employeeType = employeeType;
 		this.idPlant = idPlant;
 	}
+
 	public int getEmployee_code() {
 		return employee_code;
 	}

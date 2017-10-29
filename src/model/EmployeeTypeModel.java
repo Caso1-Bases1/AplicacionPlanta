@@ -1,29 +1,28 @@
 package model;
 
-public class EmployeeTypeModel implements DefaultModel{
+import core.EmployeeType;
 
-	@Override
-	public boolean insert() {
-		
+public class EmployeeTypeModel {
+	
+	private EmployeeType employeeType;
+	
+	public EmployeeTypeModel(EmployeeType employeeType){
+		this.employeeType = employeeType;
+	}
+	
+	public boolean insert() {	
 		return false;
 	}
 
-	@Override
-	public boolean update() {
-		
+	public EmployeeType update() {
+		return employeeType;
+	}
+
+	public boolean delete() {		
 		return false;
 	}
 
-	@Override
-	public boolean delete() {
-		
-		return false;
+	public EmployeeType search() {
+		return employeeType;
 	}
-
-	@Override
-	public boolean search() {
-		
-		return false;
-	}
-
 }

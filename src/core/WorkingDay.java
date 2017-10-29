@@ -1,11 +1,11 @@
 package core;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class WorkingDay {
 	private Date date;
-	private boolean workingDay;
-	public WorkingDay(Date date, boolean workingDay) {
+	private int workingDay;
+	public WorkingDay(Date date, int workingDay) {
 		super();
 		this.date = date;
 		this.workingDay = workingDay;
@@ -16,10 +16,10 @@ public class WorkingDay {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public boolean isWorkingDay() {
+	public int isWorkingDay() {
 		return workingDay;
 	}
-	public void setWorkingDay(boolean workingDay) {
+	public void setWorkingDay(int workingDay) {
 		this.workingDay = workingDay;
 	}
 	@Override

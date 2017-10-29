@@ -2,8 +2,13 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controller.EmployeeController;
+import controller.MarkController;
+import core.Employee;
+import core.Marks;
 import util.Utility;
 
 import javax.swing.JButton;
@@ -14,6 +19,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class AplicacionMarcas {
 
@@ -58,6 +65,23 @@ public class AplicacionMarcas {
 		nombreEmpleado.setColumns(10);
 		
 		idEmpleado = new JTextField();
+		idEmpleado.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				try {
+					int employeeCode = Integer.parseInt(idEmpleado.getText());
+					EmployeeController employeeController = new EmployeeController(new Employee(employeeCode));
+					Employee employee = employeeController.search();
+					if (employee != null){
+						nombreEmpleado.setText(employee.getName() + " " + employee.getApellidos());
+					} else {
+						JOptionPane.showMessageDialog(null, "No existe el empleado");
+					}
+				} catch (NumberFormatException nfex) {
+					JOptionPane.showMessageDialog(null, "Número de empleado incorrecto");
+				}
+			}
+		});
 		idEmpleado.setBounds(288, 69, 132, 20);
 		frame.getContentPane().add(idEmpleado);
 		idEmpleado.setColumns(10);
@@ -67,12 +91,48 @@ public class AplicacionMarcas {
 		frame.getContentPane().add(horaActual);
 		horaActual.setColumns(10);
 		JButton btnHoraDeEntrada = new JButton("Hora de Entrada");
+		btnHoraDeEntrada.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (idEmpleado.getText().isEmpty()){
+					try {
+						Marks mark = new Marks(Integer.parseInt(idEmpleado.getText()), horaActual.getText(), null);
+						MarkController markController = new MarkController(mark);
+						boolean markInserted = markController.insert();
+						if (markInserted){
+							//Ya ha insertado la marca de salida
+						} else {
+							//No ha insertado la marca de salida
+						}
+					} catch (NumberFormatException nfex) {
+						JOptionPane.showMessageDialog(null, "Número de empleado ingresado incorrecto");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Ingrese el número de empleado");
+				}
+			}
+		});
 		btnHoraDeEntrada.setBounds(97, 202, 132, 23);
 		frame.getContentPane().add(btnHoraDeEntrada);
 		
 		JButton btnSalida = new JButton("Hora de Salida");
 		btnSalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if (idEmpleado.getText().isEmpty()){
+					try {
+						Marks mark = new Marks(Integer.parseInt(idEmpleado.getText()), null, horaActual.getText());
+						MarkController markController = new MarkController(mark);
+						boolean markInserted = markController.insert();
+						if (markInserted){
+							//Ya ha insertado la marca de salida
+						} else {
+							//No ha insertado la marca de salida
+						}
+						} catch (NumberFormatException nfex) {
+							JOptionPane.showMessageDialog(null, "Número de empleado ingresado incorrecto");
+						}
+				} else {
+					JOptionPane.showMessageDialog(null, "Ingrese el número de empleado");
+				}
 			}
 		});
 		btnSalida.setBounds(259, 202, 132, 23);

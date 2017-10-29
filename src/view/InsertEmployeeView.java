@@ -5,12 +5,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import controller.DefaultController;
 import controller.EmployeeController;
 import core.Employee;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class InsertEmployeeView extends JPanel {
@@ -47,6 +47,15 @@ public class InsertEmployeeView extends JPanel {
 		textField.setBounds(220, 45, 168, 20);
 		add(textField);
 		textField.setColumns(10);
+		
+		DefaultController defaultController = new DefaultController();
+		int nextCode = defaultController.employeeNextCode();
+		if (nextCode == -1){
+			JOptionPane.showMessageDialog(null, "No se pudo realizar la conexión con la base de datos");
+		} else {
+			textField.setText(nextCode + "");
+			textField.setEnabled(false);
+		}
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(32, 73, 137, 14);
@@ -122,52 +131,40 @@ public class InsertEmployeeView extends JPanel {
 		
 		JButton btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				int plantNumber = PrincipalWindow.PLANT_NUMBER;
 				
-				if (textField.getText().isEmpty() || textField_1.getText().isEmpty() || textField_2.getText().isEmpty() 
-						|| textField_3.getText().isEmpty() || textField_5.getText().isEmpty() || textField_6.getText().isEmpty()
-						|| textField_7.getText().isEmpty() || textField_8.getText().isEmpty()){
+				if (!textField.getText().isEmpty() && !textField_1.getText().isEmpty() && !textField_2.getText().isEmpty() 
+						&& !textField_3.getText().isEmpty() && !textField_5.getText().isEmpty() && !textField_6.getText().isEmpty()
+						&& !textField_7.getText().isEmpty() && !textField_8.getText().isEmpty()){
 					try {
-						Date fechaSalida = null;
-						Date fechaIngreso = new Date();
+						String fechaSalida = null;
+						if (!textField_4.getText().isEmpty()){							
+							fechaSalida = textField_4.getText();
+						}
+						Employee employee = new Employee(
+								Integer.parseInt(textField.getText()), 
+								textField_1.getText(),
+								textField_2.getText(), 
+								textField_3.getText(), fechaSalida, 
+								Float.parseFloat(textField_5.getText()),
+								textField_6.getText(),
+								Integer.parseInt(textField_7.getText()), 
+								Integer.parseInt(textField_8.getText()),
+								plantNumber);
+						EmployeeController controller = new EmployeeController(employee);
+						boolean employeeInserted = controller.insert();
 						
-						String [] dateParametters1 = textField_3.getText().split("-");
-						
-						fechaIngreso.setDate(Integer.parseInt(dateParametters1[0]));
-						fechaIngreso.setMonth(Integer.parseInt(dateParametters1[1]));
-						fechaIngreso.setYear(Integer.parseInt(dateParametters1[2]));
-						
-						if (!textField_4.getText().isEmpty()){
-							String [] dateParametters = textField_4.getText().split("-");
-							fechaSalida = new Date();
-							fechaSalida.setDate(Integer.parseInt(dateParametters[0]));
-							fechaSalida.setMonth(Integer.parseInt(dateParametters[1]));
-							fechaSalida.setYear(Integer.parseInt(dateParametters[2]));
-							
-							Employee employee = new Employee(
-									Integer.parseInt(textField.getText()), 
-									textField_1.getText(),
-									textField_2.getText(), 
-									fechaIngreso, fechaSalida, 
-									Float.parseFloat(textField_5.getText()),
-									textField_6.getText(),
-									Integer.parseInt(textField_7.getText()), 
-									Integer.parseInt(textField_8.getText()),
-									plantNumber);
-							EmployeeController controller = new EmployeeController(employee);
-							boolean employeeInserted = controller.insert();
-							
-							if (employeeInserted){
-								JOptionPane.showMessageDialog(null, "Empleado ingresado");
-							} else {
-								JOptionPane.showMessageDialog(null, "No se pudo ingresar el empleado");
-							}
+						if (employeeInserted){
+							JOptionPane.showMessageDialog(null, "Empleado ingresado");
+						} else {
+							JOptionPane.showMessageDialog(null, "No se pudo ingresar el empleado");
 						}
 					} catch (NumberFormatException nfex) {
 						JOptionPane.showMessageDialog(null, "Error en los valores ingresados");
 					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Llene los campos correspondientes");
 				}
 			}
 		});

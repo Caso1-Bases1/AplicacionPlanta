@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.PlantController;
 import util.Utility;
 
 import java.awt.FlowLayout;
@@ -46,6 +47,10 @@ public class PrincipalWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalWindow() {
+		PlantController plantController = new PlantController();
+		PLANT_NUMBER = plantController.getPlantNumber();
+		System.out.println("Numero de planta: " + PLANT_NUMBER);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 50, 800, 600);
 		

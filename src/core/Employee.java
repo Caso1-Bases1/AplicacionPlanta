@@ -1,20 +1,18 @@
 package core;
 
-import java.util.Date;
-
 public class Employee {
 	private int employee_code;
 	private String name;
 	private String apellidos;
-	private Date admissionDate;
-	private Date departureDate;
+	private String admissionDate;
+	private String departureDate;
 	private float salary;
 	private String department;
 	private int supervisorCode;
 	private int employeeType;
 	private int idPlant;
 	
-	public Employee(int employee_code, String name, String apellidos, Date admissionDate, Date departureDate,
+	public Employee(int employee_code, String name, String apellidos, String admissionDate, String departureDate,
 			float salary, String department, int supervisorCode, int employeeType, int idPlant) {
 		super();
 		this.employee_code = employee_code;
@@ -27,6 +25,10 @@ public class Employee {
 		this.supervisorCode = supervisorCode;
 		this.employeeType = employeeType;
 		this.idPlant = idPlant;
+	}
+
+	public Employee(int employeeCode) {
+		this.employee_code = employeeCode;
 	}
 
 	public int getEmployee_code() {
@@ -47,16 +49,16 @@ public class Employee {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public Date getAdmissionDate() {
+	public String getAdmissionDate() {
 		return admissionDate;
 	}
-	public void setAdmissionDate(Date admissionDate) {
+	public void setAdmissionDate(String admissionDate) {
 		this.admissionDate = admissionDate;
 	}
-	public Date getDepartureDate() {
+	public String getDepartureDate() {
 		return departureDate;
 	}
-	public void setDepartureDate(Date departureDate) {
+	public void setDepartureDate(String departureDate) {
 		this.departureDate = departureDate;
 	}
 	public float getSalary() {

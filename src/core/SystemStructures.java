@@ -8,12 +8,14 @@ public class SystemStructures {
 	private List<EmployeeType> employeeTypeList;
 	private List<Holiday> holidayList;
 	private List<WorkingDay> workingDaysList;
+	private List<Marks> marksList;
 	
 	public SystemStructures() {
 		employeeList = new ArrayList<>();
 		employeeTypeList = new ArrayList<>();
 		holidayList = new ArrayList<>();
 		workingDaysList  = new ArrayList<>();
+		marksList = new ArrayList<>();
 	}
 	
 	public List<Employee> getEmployeeList() {
@@ -46,5 +48,13 @@ public class SystemStructures {
 	
 	public void setWorkingDaysList(List<WorkingDay> workingDaysList) {
 		this.workingDaysList = workingDaysList;
+	}
+
+	public List<Marks> getMarksList() {
+		return marksList;
+	}
+
+	public void setMarksList(List<Marks> marksList) {
+		this.marksList = marksList;
 	}	
 }

@@ -10,6 +10,8 @@ public class DBConnection {
 	private String USERNAME = "mysqlparaiso";
 	private String PASSWORD = "saucr.117";
 	
+	private static boolean dbConnected;
+	
 	public static DBConnection dbConnection;
 	
 	public static DBConnection getInstance(){
@@ -22,7 +24,8 @@ public class DBConnection {
 	public Connection connect(){
 		try {
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-		    System.out.println("Database connectada");		    
+		    System.out.println("Database connectada");
+		    dbConnected = true;
 		    return connection;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -35,9 +38,14 @@ public class DBConnection {
 		try {
 			if (connection != null)
 				if (!connection.isClosed())
+					dbConnected = false;
 					connection.close();
 		} catch (SQLException e) { 
 			e.printStackTrace();
 		}
+	}
+	
+	public static boolean isConnected(){
+		return dbConnected;
 	}
 }

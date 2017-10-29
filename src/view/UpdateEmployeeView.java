@@ -167,12 +167,22 @@ this.setLayout(null);
 				if (employeeInserted == null){
 					JOptionPane.showMessageDialog(null, "Ingrese la información del empleado");
 				} else {
+					employeeInserted.setName(textField_1.getText());
+					employeeInserted.setApellidos(textField_2.getText());
+					employeeInserted.setAdmissionDate(textField_3.getText());
+					employeeInserted.setDepartureDate(textField_4.getText().isEmpty() ? null: textField_4.getText());
+					employeeInserted.setSalary(Float.parseFloat(textField_5.getText()));
+					employeeInserted.setDepartment(textField_6.getText());
+					employeeInserted.setSupervisorCode(Integer.parseInt(textField_7.getText()));
+					employeeInserted.setEmployeeType(Integer.parseInt(textField_8.getText()));
+					employeeInserted.setIdPlant(PrincipalWindow.PLANT_NUMBER);
+					
 					EmployeeController controller = new EmployeeController(employeeInserted);
 					Employee deleted = controller.update();
 					if (deleted != null){
 						JOptionPane.showMessageDialog(null, "El empleado ha sido modificado");
 					} else {
-						JOptionPane.showMessageDialog(null, "No se pudo eliminar el empleado");
+						JOptionPane.showMessageDialog(null, "No se pudo modificar el empleado");
 					}
 				}
 			}

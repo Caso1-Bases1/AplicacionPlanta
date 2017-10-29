@@ -21,6 +21,8 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
 
 public class AplicacionMarcas {
 
@@ -65,20 +67,40 @@ public class AplicacionMarcas {
 		nombreEmpleado.setColumns(10);
 		
 		idEmpleado = new JTextField();
+		idEmpleado.addCaretListener(new CaretListener() {
+			public void caretUpdate(CaretEvent arg0) {
+				if(!idEmpleado.getText().isEmpty()){
+					try {
+						int employeeCode = Integer.parseInt(idEmpleado.getText());
+						EmployeeController employeeController = new EmployeeController(new Employee(employeeCode));
+						Employee employee = employeeController.search();
+						if (employee != null){
+							nombreEmpleado.setText(employee.getName() + " " + employee.getApellidos());
+						} else {
+							JOptionPane.showMessageDialog(null, "No existe el empleado");
+						}
+					} catch (NumberFormatException nfex) {
+						JOptionPane.showMessageDialog(null, "Número de empleado incorrecto");
+					}
+				}
+			}
+		});
 		idEmpleado.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
-				try {
-					int employeeCode = Integer.parseInt(idEmpleado.getText());
-					EmployeeController employeeController = new EmployeeController(new Employee(employeeCode));
-					Employee employee = employeeController.search();
-					if (employee != null){
-						nombreEmpleado.setText(employee.getName() + " " + employee.getApellidos());
-					} else {
-						JOptionPane.showMessageDialog(null, "No existe el empleado");
+				if(!idEmpleado.getText().isEmpty()){
+					try {
+						int employeeCode = Integer.parseInt(idEmpleado.getText());
+						EmployeeController employeeController = new EmployeeController(new Employee(employeeCode));
+						Employee employee = employeeController.search();
+						if (employee != null){
+							nombreEmpleado.setText(employee.getName() + " " + employee.getApellidos());
+						} else {
+							JOptionPane.showMessageDialog(null, "No existe el empleado");
+						}
+					} catch (NumberFormatException nfex) {
+						JOptionPane.showMessageDialog(null, "Número de empleado incorrecto");
 					}
-				} catch (NumberFormatException nfex) {
-					JOptionPane.showMessageDialog(null, "Número de empleado incorrecto");
 				}
 			}
 		});

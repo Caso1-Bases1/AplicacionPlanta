@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 
 public class PrincipalWindow extends JFrame {
 
@@ -278,6 +279,30 @@ public class PrincipalWindow extends JFrame {
 			}
 		});
 		btnMarcas.add(mntmAbrirMdulo);
+		
+		JMenu mnConsultas = new JMenu("Consultas");
+		menuBar.add(mnConsultas);
+		
+		JMenuItem mntmEmpleadosPorSupervisor = new JMenuItem("Empleados por supervisor");
+		mnConsultas.add(mntmEmpleadosPorSupervisor);
+		
+		JMenuItem mntmEmpleadosPorDepartamentos = new JMenuItem("Empleados por departamentos");
+		mnConsultas.add(mntmEmpleadosPorDepartamentos);
+		
+		JMenuItem mntmAusenciasPorPeriodo = new JMenuItem("Ausencias por periodo de tiempo");
+		mnConsultas.add(mntmAusenciasPorPeriodo);
+		
+		JMenuItem mntmTardasPorPeriodo = new JMenuItem("Tard\u00EDas por periodo de tiempo");
+		mnConsultas.add(mntmTardasPorPeriodo);
+		
+		JMenuItem mntmEmpleadoSinMarca = new JMenuItem("Empleado sin marca de salida por periodo de tiempo");
+		mnConsultas.add(mntmEmpleadoSinMarca);
+		
+		JRadioButtonMenuItem rdbtnmntmMontoPorEmpleado = new JRadioButtonMenuItem("Monto por empleado por periodo de tiempo");
+		mnConsultas.add(rdbtnmntmMontoPorEmpleado);
+		
+		JMenuItem mntmEmpleadosDadosDe = new JMenuItem("Empleados dados de baja en un periodo de tiempo");
+		mnConsultas.add(mntmEmpleadosDadosDe);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

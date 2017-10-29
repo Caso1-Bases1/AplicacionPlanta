@@ -35,7 +35,7 @@ public class SearchEmployeeTypeView extends JPanel {
 		add(lblTiposDeEmpleado);
 		
 		JLabel lblCodigoTipoDe = new JLabel("Codigo tipo de empleado");
-		lblCodigoTipoDe.setBounds(36, 46, 165, 14);
+		lblCodigoTipoDe.setBounds(36, 46, 187, 14);
 		add(lblCodigoTipoDe);
 		
 		textField = new JTextField();
@@ -44,7 +44,7 @@ public class SearchEmployeeTypeView extends JPanel {
 		textField.setColumns(10);
 		
 		JLabel lblSalarioPorHora = new JLabel("Salario por hora");
-		lblSalarioPorHora.setBounds(36, 86, 118, 14);
+		lblSalarioPorHora.setBounds(36, 86, 187, 14);
 		add(lblSalarioPorHora);
 		
 		textField_1 = new JTextField();
@@ -53,7 +53,7 @@ public class SearchEmployeeTypeView extends JPanel {
 		textField_1.setColumns(10);
 		
 		JLabel lblSalarioPorHora_1 = new JLabel("Salario por hora extra");
-		lblSalarioPorHora_1.setBounds(36, 129, 118, 14);
+		lblSalarioPorHora_1.setBounds(36, 129, 187, 14);
 		add(lblSalarioPorHora_1);
 		
 		textField_2 = new JTextField();
@@ -62,7 +62,7 @@ public class SearchEmployeeTypeView extends JPanel {
 		textField_2.setColumns(10);
 		
 		JLabel lblCantidadDe = new JLabel("Cantidad de horas por semana");
-		lblCantidadDe.setBounds(36, 176, 165, 14);
+		lblCantidadDe.setBounds(36, 176, 187, 14);
 		add(lblCantidadDe);
 		
 		textField_3 = new JTextField();

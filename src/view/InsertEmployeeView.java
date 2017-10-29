@@ -47,7 +47,7 @@ public class InsertEmployeeView extends JPanel {
 		textField.setBounds(220, 45, 168, 20);
 		add(textField);
 		textField.setColumns(10);
-		
+
 		DefaultController defaultController = new DefaultController();
 		int nextCode = defaultController.employeeNextCode();
 		if (nextCode == -1){

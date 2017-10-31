@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,7 +21,6 @@ public class InsertHolidayView extends JPanel {
 	private static final long serialVersionUID = 8499173701843047721L;
 	private JTextField textField;
 	private JRadioButton rdbtnPagado;
-	private Holiday holiday;
 	/**
 	 * Create the panel.
 	 */
@@ -44,11 +42,9 @@ public class InsertHolidayView extends JPanel {
 		
 		JButton btnIngresar = new JButton("Ingresar");
 		btnIngresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {							
-				String [] dateParameters = textField.getText().split("-");
-				@SuppressWarnings("deprecation")
-				Date date = new Date(Integer.parseInt(dateParameters[0]), Integer.parseInt(dateParameters[1]), Integer.parseInt(dateParameters[2]));
-				HolidayController controller = new HolidayController(new Holiday(date, false));				
+			public void actionPerformed(ActionEvent e) {
+				String date = textField.getText();
+				HolidayController controller = new HolidayController(new Holiday(date, rdbtnPagado.isSelected()));				
 				boolean holidayInserted = controller.insert();
 				
 				if(holidayInserted){

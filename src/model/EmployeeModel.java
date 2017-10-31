@@ -49,7 +49,7 @@ public class EmployeeModel {
 	public Employee update() {
 		CallableStatement cStmt;
 		try {
-			cStmt = connection.prepareCall(Utility.MODIFY_EMPLOYEE);
+			cStmt = connection.prepareCall(Utility.UPDATE_EMPLOYEE);
 			
 			cStmt.setInt(1, employee.getEmployee_code());
 			cStmt.setString(2, employee.getName());

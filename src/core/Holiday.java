@@ -1,20 +1,18 @@
 package core;
 
-import java.util.Date;
-
 public class Holiday {
-	private Date date;
+	private String date;
 	private boolean doublePay;
 	
-	public Holiday(Date date, boolean doublePay) {
+	public Holiday(String date, boolean doublePay) {
 		super();
 		this.date = date;
 		this.doublePay = doublePay;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public boolean isDoublePay() {

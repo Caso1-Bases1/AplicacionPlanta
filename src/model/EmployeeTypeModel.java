@@ -42,7 +42,7 @@ public class EmployeeTypeModel {
 	public EmployeeType update() {
 		CallableStatement cStmt;
 		try {
-			cStmt = connection.prepareCall(Utility.MODIFY_EMPLOYEE_TYPE);
+			cStmt = connection.prepareCall(Utility.UPDATE_EMPLOYEE_TYPE);
 			
 			cStmt.setInt(1, employeeType.getEmployeeTypeCode());
 			cStmt.setFloat(2, employeeType.getHourSalary());

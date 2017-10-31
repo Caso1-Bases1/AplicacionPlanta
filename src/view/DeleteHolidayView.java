@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -45,10 +44,8 @@ public class DeleteHolidayView extends JPanel {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {							
-				String [] dateParameters = textField.getText().split("-");
-				@SuppressWarnings("deprecation")
-				Date date = new Date(Integer.parseInt(dateParameters[0]), Integer.parseInt(dateParameters[1]), Integer.parseInt(dateParameters[2]));
-				HolidayController controller = new HolidayController(new Holiday(date, false));				
+				String date = textField.getText();
+				HolidayController controller = new HolidayController(new Holiday(date, rdbtnPagado.isSelected()));				
 				holiday = controller.search();
 				
 				if(holiday != null){

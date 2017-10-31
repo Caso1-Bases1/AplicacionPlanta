@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controller.DefaultController;
 import controller.PlantController;
 import util.Utility;
 
@@ -15,7 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JOptionPane;
 
 public class PrincipalWindow extends JFrame {
 
@@ -161,28 +162,6 @@ public class PrincipalWindow extends JFrame {
 		JMenu mnAdministrarFeriados = new JMenu("Administrar d\u00EDas laborables");
 		mnDasLaborables.add(mnAdministrarFeriados);
 		
-		JMenuItem mntmNuevoDaLaborable = new JMenuItem("Nuevo d\u00EDa laborable");
-		mntmNuevoDaLaborable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				InsertWorkingDayView workingDayView = new InsertWorkingDayView();
-				contentPane.removeAll();
-				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
-				repaint();
-			}
-		});
-		mnAdministrarFeriados.add(mntmNuevoDaLaborable);
-		
-		JMenuItem mntmBuscarDaLaborable = new JMenuItem("Buscar d\u00EDa laborable");
-		mntmBuscarDaLaborable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SearchWorkingDayView workingDayView = new SearchWorkingDayView();
-				contentPane.removeAll();
-				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
-				repaint();			
-			}
-		});
-		mnAdministrarFeriados.add(mntmBuscarDaLaborable);
-		
 		JMenuItem mntmModificarDaLaborable = new JMenuItem("Modificar d\u00EDa laborable");
 		mntmModificarDaLaborable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -194,48 +173,26 @@ public class PrincipalWindow extends JFrame {
 		});
 		mnAdministrarFeriados.add(mntmModificarDaLaborable);
 		
-		JMenuItem mntmEliminarDaLaborable = new JMenuItem("Eliminar d\u00EDa laborable");
-		mntmEliminarDaLaborable.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DeleteWorkingDayView workingDayView = new DeleteWorkingDayView();
-				contentPane.removeAll();
-				contentPane.add(workingDayView).setBounds(0, 0, 800, 600);
-				repaint();				
-			}
-		});
-		mnAdministrarFeriados.add(mntmEliminarDaLaborable);
-		
 		JMenu mnAdministrarDiasLaborables = new JMenu("Administrar feriados");
 		mnDasLaborables.add(mnAdministrarDiasLaborables);
 		
 		JMenuItem mntmNuevoFeriado = new JMenuItem("Nuevo feriado");
 		mntmNuevoFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InsertHolidayView holidayView = new InsertHolidayView();
 				contentPane.removeAll();
-				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
-				repaint();
+				contentPane.add(new InsertHolidayView()).setBounds(0, 0, 800, 150);
+				contentPane.add(new HolidaysView()).setBounds(50, 200, 450, 600);
+				repaint();				
 			}
 		});
 		mnAdministrarDiasLaborables.add(mntmNuevoFeriado);
 		
-		JMenuItem mntmBuscarFeriado = new JMenuItem("Buscar feriado");
-		mntmBuscarFeriado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SearchHolidayView holidayView = new SearchHolidayView();
-				contentPane.removeAll();
-				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
-				repaint();
-			}
-		});
-		mnAdministrarDiasLaborables.add(mntmBuscarFeriado);
-		
 		JMenuItem mntmModificarFeriado = new JMenuItem("Modificar feriado");
 		mntmModificarFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UpdateHolidayView holidayView = new UpdateHolidayView();
 				contentPane.removeAll();
-				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				contentPane.add(new UpdateHolidayView()).setBounds(0, 0, 800, 150);
+				contentPane.add(new HolidaysView()).setBounds(50, 200, 450, 600);
 				repaint();
 			}
 		});
@@ -244,13 +201,27 @@ public class PrincipalWindow extends JFrame {
 		JMenuItem mntmEliminarFeriado = new JMenuItem("Eliminar feriado");
 		mntmEliminarFeriado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DeleteHolidayView holidayView = new DeleteHolidayView();
 				contentPane.removeAll();
-				contentPane.add(holidayView).setBounds(0, 0, 800, 600);
+				contentPane.add(new DeleteHolidayView()).setBounds(0, 0, 800, 150);
+				contentPane.add(new HolidaysView()).setBounds(50, 200, 450, 600);
 				repaint();
 			}
 		});
 		mnAdministrarDiasLaborables.add(mntmEliminarFeriado);
+		
+		JMenuItem mntmCargarCalendarioEn = new JMenuItem("Cargar calendario en blanco");
+		mntmCargarCalendarioEn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DefaultController defaultController = new DefaultController();
+				boolean result = defaultController.loadCalendar();
+				if (result){
+					JOptionPane.showMessageDialog(null, "Calendario generado");
+				} else {
+					JOptionPane.showMessageDialog(null, "Ya se ha cargado el calendario de este año, revise los días laborables");
+				}
+			}
+		});
+		mnDasLaborables.add(mntmCargarCalendarioEn);
 		
 		JMenu mnCdigoDePlanta = new JMenu("C\u00F3digo de planta");
 		mnMantenimiento.add(mnCdigoDePlanta);
@@ -298,7 +269,7 @@ public class PrincipalWindow extends JFrame {
 		JMenuItem mntmEmpleadoSinMarca = new JMenuItem("Empleado sin marca de salida por periodo de tiempo");
 		mnConsultas.add(mntmEmpleadoSinMarca);
 		
-		JRadioButtonMenuItem rdbtnmntmMontoPorEmpleado = new JRadioButtonMenuItem("Monto por empleado por periodo de tiempo");
+		JMenuItem rdbtnmntmMontoPorEmpleado = new JMenuItem("Monto por empleado por periodo de tiempo");
 		mnConsultas.add(rdbtnmntmMontoPorEmpleado);
 		
 		JMenuItem mntmEmpleadosDadosDe = new JMenuItem("Empleados dados de baja en un periodo de tiempo");

@@ -16,4 +16,8 @@ public class DefaultController {
 	public int employeeTypeNextCode (){
 		return defaultModel.employeeTypeNextCode();
 	}
+
+	public boolean loadCalendar() {
+		return defaultModel.loadCalendar();
+	}
 }

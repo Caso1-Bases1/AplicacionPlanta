@@ -46,4 +46,20 @@ public class DefaultModel {
 			DBConnection.getInstance().disconnect();
 		}	
 	}
+
+	public boolean loadCalendar() {
+		CallableStatement cStmt;
+		try {
+			cStmt = connection.prepareCall(Utility.LOAD_CALENDAR);
+			boolean hasResults = cStmt.execute();
+			System.out.println(hasResults);
+			return hasResults;
+		} catch (SQLException | NullPointerException e) {
+			System.err.println("No se pudo realizar la consulta");
+			System.err.println(e.getMessage());			
+		} finally {
+			DBConnection.getInstance().disconnect();
+		}	
+		return false;
+	}
 }

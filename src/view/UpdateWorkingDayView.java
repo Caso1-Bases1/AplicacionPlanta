@@ -2,7 +2,6 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -47,23 +46,17 @@ this.setLayout(null);
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {											
-				String [] dateParameters = textField.getText().split("-");
-				@SuppressWarnings("deprecation")
-				Date date = new Date(Integer.parseInt(dateParameters[0]), Integer.parseInt(dateParameters[1]), Integer.parseInt(dateParameters[2]));
-				WorkingDayController controller = new WorkingDayController(new WorkingDay(date, 2));				
+				WorkingDayController controller = new WorkingDayController(new WorkingDay(textField.getText()));				
 				workingDay = controller.search();
 				
 				if(workingDay != null){
-					if (workingDay.isWorkingDay() == 1){
+					if (workingDay.isWorkingDay()){
 						rdbtnLaborable.setSelected(true);
 						rdbtnNoLaborable.setSelected(false);
-					} else if (workingDay.isWorkingDay() == 0){
+					} else if (workingDay.isWorkingDay()){
 						rdbtnLaborable.setSelected(false);
 						rdbtnNoLaborable.setSelected(true);
-					} else {
-						rdbtnLaborable.setSelected(false);
-						rdbtnNoLaborable.setSelected(false);
-					} 
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "No existe un día laborable con ese fecha");
 				}
@@ -73,10 +66,20 @@ this.setLayout(null);
 		add(btnBuscar);
 		
 		rdbtnLaborable = new JRadioButton("Laborable");
+		rdbtnLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				rdbtnNoLaborable.setSelected(false);
+			}
+		});
 		rdbtnLaborable.setBounds(310, 49, 109, 23);
 		add(rdbtnLaborable);
 		
 		rdbtnNoLaborable = new JRadioButton("No laborable");
+		rdbtnNoLaborable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				rdbtnLaborable.setSelected(false);
+			}
+		});
 		rdbtnNoLaborable.setBounds(310, 68, 109, 23);
 		add(rdbtnNoLaborable);
 		
@@ -86,9 +89,15 @@ this.setLayout(null);
 				if (workingDay == null){
 					JOptionPane.showMessageDialog(null, "No existe un día laborable con esa fecha");
 				} else {
-					int isWorkingDay = rdbtnLaborable.isSelected() ? 1 : rdbtnNoLaborable.isSelected() ? 0 : 2;
+					boolean isWorkingDay = false;
+					if (rdbtnLaborable.isSelected()){
+						isWorkingDay = true;
+					} else if (rdbtnNoLaborable.isSelected()){
+						isWorkingDay = false;
+					}
 					WorkingDayController controller = new WorkingDayController(new WorkingDay(workingDay.getDate(), isWorkingDay));					
 					controller.update();
+					JOptionPane.showMessageDialog(null, "Día laborable modificado");
 				}
 			}
 		});

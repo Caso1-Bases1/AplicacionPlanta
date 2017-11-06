@@ -10,7 +10,7 @@ public class MarkController {
 		this.marksModel = new MarksModel(mark);
 	}
 	
-	public boolean insert(){
+	public int insert(){
 		return this.marksModel.insert();
 	}
 	

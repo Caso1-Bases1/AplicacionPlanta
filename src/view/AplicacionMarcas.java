@@ -46,7 +46,7 @@ public class AplicacionMarcas {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setTitle("Aplicacion de Planta");
-		frame.setBounds(850, 200, 568, 307);
+		frame.setBounds(850, 200, 575, 350);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNombreDeEmpleado = new JLabel("Nombre de Empleado");
@@ -115,15 +115,18 @@ public class AplicacionMarcas {
 		JButton btnHoraDeEntrada = new JButton("Hora de Entrada");
 		btnHoraDeEntrada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (idEmpleado.getText().isEmpty()){
+				if (!idEmpleado.getText().isEmpty()){
 					try {
 						Marks mark = new Marks(Integer.parseInt(idEmpleado.getText()), horaActual.getText(), null);
 						MarkController markController = new MarkController(mark);
-						boolean markInserted = markController.insert();
-						if (markInserted){
-							//Ya ha insertado la marca de salida
+						int markInserted = markController.insert();
+						if (markInserted == 1){
+							JOptionPane.showMessageDialog(null, "Marca de entrada ingresada con éxito");
+							//Falta la confirmación visual y sonora
+						} else if (markInserted == -1){
+							JOptionPane.showMessageDialog(null, "Hoy no es un día laborable");
 						} else {
-							//No ha insertado la marca de salida
+							JOptionPane.showMessageDialog(null, "Ocurrió un error ingresando la marca de entrada");
 						}
 					} catch (NumberFormatException nfex) {
 						JOptionPane.showMessageDialog(null, "Número de empleado ingresado incorrecto");
@@ -139,19 +142,23 @@ public class AplicacionMarcas {
 		JButton btnSalida = new JButton("Hora de Salida");
 		btnSalida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (idEmpleado.getText().isEmpty()){
+				if (!idEmpleado.getText().isEmpty()){
 					try {
 						Marks mark = new Marks(Integer.parseInt(idEmpleado.getText()), null, horaActual.getText());
 						MarkController markController = new MarkController(mark);
-						boolean markInserted = markController.insert();
-						if (markInserted){
-							//Ya ha insertado la marca de salida
+						int markInserted = markController.insert();
+						if (markInserted == 1){
+							JOptionPane.showMessageDialog(null, "Marca de salida ingresada con éxito");
+							//Agregar la confirmación visual y sonora de la marca 
+						} else if (markInserted == -1){
+							JOptionPane.showMessageDialog(null, "No tiene marcas de entrada");
+							//Agregar la confirmación visual y sonora de la marca
 						} else {
-							//No ha insertado la marca de salida
+							JOptionPane.showMessageDialog(null, "Un error ocurrió ingresando la marca de salida");
 						}
-						} catch (NumberFormatException nfex) {
-							JOptionPane.showMessageDialog(null, "Número de empleado ingresado incorrecto");
-						}
+					} catch (NumberFormatException nfex) {
+						JOptionPane.showMessageDialog(null, "Número de empleado ingresado incorrecto");
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Ingrese el número de empleado");
 				}
@@ -161,6 +168,16 @@ public class AplicacionMarcas {
 		frame.getContentPane().add(btnSalida);
 		horaActual.setText(dateFormat.format(date));
 		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				date = new Date();
+				horaActual.setText(dateFormat.format(date));
+			}
+		});
+		btnActualizar.setBounds(430, 123, 112, 23);
+		frame.getContentPane().add(btnActualizar);
+		
 		frame.addWindowListener(new WindowAdapter() {		
             public void windowClosing(WindowEvent e){
             	Utility.IS_MARCAS_OPEN = false;
@@ -168,6 +185,9 @@ public class AplicacionMarcas {
         });
 		
 		Utility.IS_MARCAS_OPEN = true;
+		
+		NotificationMessageView messageView = new NotificationMessageView("Prueba", 1);
+		frame.getContentPane().add(messageView).setBounds(0, 260, 575, 50);
 	}
 
 	public JFrame getFrame() {

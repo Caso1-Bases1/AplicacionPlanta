@@ -223,6 +223,17 @@ public class PrincipalWindow extends JFrame {
 		});
 		mnDasLaborables.add(mntmCargarCalendarioEn);
 		
+		JMenuItem mntmCargarCalendarioPor = new JMenuItem("Cargar calendario por tipo de empleado");
+		mntmCargarCalendarioPor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CalendarByEmployeeTypeView calendarByEmployeeTypeView = new CalendarByEmployeeTypeView();
+				contentPane.removeAll();
+				contentPane.add(calendarByEmployeeTypeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
+		mnDasLaborables.add(mntmCargarCalendarioPor);
+		
 		JMenu mnCdigoDePlanta = new JMenu("C\u00F3digo de planta");
 		mnMantenimiento.add(mnCdigoDePlanta);
 		
@@ -255,28 +266,86 @@ public class PrincipalWindow extends JFrame {
 		menuBar.add(mnConsultas);
 		
 		JMenuItem mntmEmpleadosPorSupervisor = new JMenuItem("Empleados por supervisor");
+		mntmEmpleadosPorSupervisor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EmployeeBySupervisorView employeeBySupervisorView = new EmployeeBySupervisorView();
+				contentPane.removeAll();
+				contentPane.add(employeeBySupervisorView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmEmpleadosPorSupervisor);
 		
 		JMenuItem mntmEmpleadosPorDepartamentos = new JMenuItem("Empleados por departamentos");
+		mntmEmpleadosPorDepartamentos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EmployeesByDeparmentView employeesByDeparmentView = new EmployeesByDeparmentView();
+				contentPane.removeAll();
+				contentPane.add(employeesByDeparmentView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmEmpleadosPorDepartamentos);
 		
 		JMenuItem mntmAusenciasPorPeriodo = new JMenuItem("Ausencias por periodo de tiempo");
+		mntmAusenciasPorPeriodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EmployeeAbsenceView employeeAbsenceView = new EmployeeAbsenceView();
+				contentPane.removeAll();
+				contentPane.add(employeeAbsenceView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmAusenciasPorPeriodo);
 		
 		JMenuItem mntmTardasPorPeriodo = new JMenuItem("Tard\u00EDas por periodo de tiempo");
+		mntmTardasPorPeriodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmployeesLatesView employeesLatesView = new EmployeesLatesView();
+				contentPane.removeAll();
+				contentPane.add(employeesLatesView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmTardasPorPeriodo);
 		
 		JMenuItem mntmEmpleadoSinMarca = new JMenuItem("Empleado sin marca de salida por periodo de tiempo");
+		mntmEmpleadoSinMarca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EmployeesWithoutExitTimeView employeesWithoutExitTimeView = new EmployeesWithoutExitTimeView();
+				contentPane.removeAll();
+				contentPane.add(employeesWithoutExitTimeView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmEmpleadoSinMarca);
 		
 		JMenuItem rdbtnmntmMontoPorEmpleado = new JMenuItem("Monto por empleado por periodo de tiempo");
+		rdbtnmntmMontoPorEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AmountEmployeePaid amountEmployeePaid = new AmountEmployeePaid();
+				contentPane.removeAll();
+				contentPane.add(amountEmployeePaid).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(rdbtnmntmMontoPorEmpleado);
 		
 		JMenuItem mntmEmpleadosDadosDe = new JMenuItem("Empleados dados de baja en un periodo de tiempo");
+		mntmEmpleadosDadosDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DismissedEmployeesView dismissedEmployeesView = new DismissedEmployeesView();
+				contentPane.removeAll();
+				contentPane.add(dismissedEmployeesView).setBounds(0, 0, 800, 600);
+				repaint();
+			}
+		});
 		mnConsultas.add(mntmEmpleadosDadosDe);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setOpaque(false);
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		repaint();
 	}
 }

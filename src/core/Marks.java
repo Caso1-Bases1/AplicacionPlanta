@@ -7,15 +7,16 @@ public class Marks {
 	private String endDateTime;
 	
 	public Marks(int marckCode, int employeeCode, String startDateTime, String endDateTime) {
-		super();
 		this.marckCode = marckCode;
 		this.employeeCode = employeeCode;
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 	}
 	
-	public Marks(int marckCode, String startDateTime, String endDateTime) {
-		this.marckCode = marckCode;
+	public Marks(int employeeCode, String startDateTime, String endDateTime) {
+		this.employeeCode = employeeCode;
+		this.startDateTime = startDateTime;
+		this.endDateTime = endDateTime;
 	}
 	public int getMarckCode() {
 		return marckCode;

@@ -27,4 +27,20 @@ public class Utility {
 	public static String NEXT_EMPLOYEE_TYPE_CODE = "{call sp_cantidad_tipos_empleado(?)}";
 	public static String GET_PLANT_NUMBER = "{call sp_numero_planta(?)}";
 	public static String LOAD_CALENDAR = "{call sp_generar_calendario()}";
+	
+	public static String EMPLOYEES_BY_SUPERVISOR = "{call sp_empleado_supervisor(?)}";
+	public static String EMPLOYEES_BY_DEPARTMENT = "{call sp_empleado_Departamento(?)}";
+	public static String EMPLOYEES_ABSENCE = "{call sp_ausencias_Empleado(?, ?)}";
+	public static String EMPLOYEES_LATES = "{call sp_tardia_Empleado(?, ?, ?)}";
+	public static String PAYMEND_EMPLOYEE_PERIOD = "{call sp_monto(?, ?, ?)}";
+	
+	public static String ENTRY_HOUR = "0000-00-00 08:00:00";
+	
+	public static String EMPLOYEES_WITHOUT_EXIT_TIME = "{call sp_empleados_sin_marca_salida(?, ?)}";
+	public static String EMPLOYEES_DISSMISED = "{call sp_empleados_dados_de_baja(?, ?)}";
+	
+	public static String ENTRY_MARK = "{call sp_marcar_entrada(?, ?)}";
+	public static String EXIT_MARK = "{call sp_marcar_salida(?, ?)}";
+	
+	public static String LOAD_CALENDAR_BY_EMPLOYEE_TYPE = "{call sp_generar_calendario_tipo_empleado(?, ?, ?, ?, ?, ?)}";
 }
